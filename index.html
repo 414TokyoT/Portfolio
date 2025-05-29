@@ -35,8 +35,10 @@
       white-space: nowrap;
       overflow: hidden;
       border-right: 2px solid #4db6ac;
-      width: 100%;
-      animation: typing 4s steps(40, end), blink .75s step-end infinite;
+    }
+
+    .typing {
+      animation: blink 0.8s step-end infinite;
     }
     @keyframes typing {
       from { width: 0 }
@@ -167,10 +169,12 @@
       function typing() {
         if (j < roleText.length) {
           typewriter.textContent += roleText.charAt(j);
+          typewriter.classList.add("typing");
           j++;
           setTimeout(typing, 100);
         } else {
-          setTimeout(() => {
+          typewriter.classList.remove("typing");
+        setTimeout(() => {
             i = (i + 1) % roles.length;
             typeRole();
           }, 2000);
