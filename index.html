@@ -95,7 +95,17 @@
   </style>
 </head>
 <body>
-  <div class="container">
+
+<header style="position: fixed; top: 0; width: 100%; background-color: #1e1e1e; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.5);">
+  <nav style="max-width: 1200px; margin: auto; padding: 15px 40px; display: flex; justify-content: flex-end; gap: 30px;">
+    <a href="#about" style="color: #f4f4f4; text-decoration: none; font-size: 16px;">About Me</a>
+    <a href="#contact" style="color: #f4f4f4; text-decoration: none; font-size: 16px;">Contact</a>
+    <a href="#blogs" style="color: #f4f4f4; text-decoration: none; font-size: 16px;">Blogs</a>
+  </nav>
+</header>
+
+<div style='height: 80px;'></div>
+  <div class="container" id="about">
     <div class="text-section">
       <h1>Hello, I am Vinaya :)</h1>
       <div id="roleDisplay" style="font-size: 24px; color: #4db6ac; margin-top: 10px; transition: opacity 0.5s ease;"></div>
@@ -116,7 +126,7 @@
 
   <div class="divider"></div>
 
-  <div class="education">
+  <div class="education" id="blogs">
     <h2>Education</h2>
     <div class="edu-box">
       <h3>Rutgers University – The State University of New Jersey</h3>
@@ -132,7 +142,7 @@
 
   <div class="divider"></div>
 
-  <div class="skills-exp">
+  <div class="skills-exp" id="contact">
     <div class="row">
       <div class="exp-box" style="flex: 1; min-width: 300px;">
         <h2>Experience</h2>
