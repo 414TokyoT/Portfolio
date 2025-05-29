@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Vinaya Ramaswamy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Georgia', serif;
+            background-color: #1e1e1e;
+            color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            gap: 50px;
+            align-items: center;
+            padding: 40px;
+            max-width: 1200px;
+        }
+        .text-section {
+            max-width: 600px;
+        }
+        .text-section h1 {
+            font-size: 48px;
+            margin: 0 0 20px;
+        }
+        .animated-roles {
+            font-size: 24px;
+            color: #4db6ac;
+            margin-bottom: 20px;
+            height: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+        .animated-roles span {
+            display: inline-block;
+            position: absolute;
+            animation: slideUp 10s steps(5) infinite;
+        }
+        @keyframes slideUp {
+            0% { top: 0; }
+            20% { top: 0; }
+            25% { top: -30px; }
+            45% { top: -30px; }
+            50% { top: -60px; }
+            70% { top: -60px; }
+            75% { top: -90px; }
+            95% { top: -90px; }
+            100% { top: -120px; }
+        }
+        .blurb {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #cccccc;
+        }
+        .photo-section img {
+            border-radius: 20px;
+            max-width: 300px;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.6);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-section">
+            <h1>Hello, I am Vinaya :)</h1>
+            <div class="animated-roles">
+                <span>
+                    Analyst<br>
+                    Financial Analyst<br>
+                    Research Analyst<br>
+                    Strategy & Growth<br>
+                    Policy Analyst
+                </span>
+            </div>
+            <div class="blurb">
+                I’m powered by data, iced coffee, and the kind of color-coded spreadsheets that make people say, “wow, that’s... a lot.” 
+                I love making sense of messy information, whether it’s market trends, policy impacts, or my grocery budget. 
+                Whether it’s finding the signal in the noise or storytelling with numbers, I believe insight beats intuition unless we’re picking restaurants.
+            </div>
+        </div>
+        <div class="photo-section">
+            <img src="PHOTO-2024-08-26-13-05-10.jpg" alt="Vinaya's Photo" />
+        </div>
+    </div>
+</body>
+</html>
