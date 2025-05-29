@@ -12,18 +12,15 @@
             font-family: 'Georgia', serif;
             background-color: #1e1e1e;
             color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
         }
         .container {
             display: flex;
             flex-direction: row;
             gap: 50px;
             align-items: center;
-            padding: 40px;
+            padding: 60px 40px 40px 40px;
             max-width: 1200px;
+            margin: auto;
         }
         .text-section {
             max-width: 600px;
@@ -66,6 +63,40 @@
             max-width: 300px;
             box-shadow: 0px 0px 20px rgba(0,0,0,0.6);
         }
+        .divider {
+            width: 100%;
+            height: 2px;
+            background-color: #444;
+            margin: 60px auto;
+        }
+        .education {
+            max-width: 900px;
+            margin: auto;
+            padding: 0 20px 60px 20px;
+        }
+        .education h2 {
+            font-size: 36px;
+            color: #f4f4f4;
+            margin-bottom: 30px;
+        }
+        .edu-box {
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        .edu-box h3 {
+            margin: 0;
+            color: #ffffff;
+        }
+        .edu-box p {
+            margin: 5px 0 0;
+            color: #cccccc;
+        }
+        .edu-box p:last-child {
+            color: #999999;
+        }
     </style>
 </head>
 <body>
@@ -89,6 +120,22 @@
         </div>
         <div class="photo-section">
             <img src="PHOTO-2024-08-26-13-05-10.jpg" alt="Vinaya's Photo" />
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="education">
+        <h2>Education</h2>
+        <div class="edu-box">
+            <h3>Rutgers University – The State University of New Jersey</h3>
+            <p><strong>M.A. Economics (Data Science)</strong></p>
+            <p>August 2023 – May 2025 · New Brunswick, New Jersey</p>
+        </div>
+        <div class="edu-box">
+            <h3>CMS Jain University</h3>
+            <p><strong>B.A. Economics (Honors)</strong></p>
+            <p>June 2018 – June 2021 · Bangalore, India</p>
         </div>
     </div>
 </body>
