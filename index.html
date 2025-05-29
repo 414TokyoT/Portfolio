@@ -35,10 +35,8 @@
       white-space: nowrap;
       overflow: hidden;
       border-right: 2px solid #4db6ac;
-    }
-
-    .typing {
-      animation: blink 0.8s step-end infinite;
+      width: 100%;
+      animation: typing 4s steps(40, end), blink .75s step-end infinite;
     }
     @keyframes typing {
       from { width: 0 }
@@ -100,7 +98,7 @@
   <div class="container">
     <div class="text-section">
       <h1>Hello, I am Vinaya :)</h1>
-      <div class="typewriter" id="typewriter">&nbsp;</div>
+      <div id="roleDisplay" style="font-size: 24px; color: #4db6ac; margin-top: 10px; transition: opacity 0.5s ease;"></div>
       <div class="blurb">
         I run on data, iced coffee, and the kind of color-coded spreadsheets that make people say, “wow, that’s... a lot.” Whether it’s decoding market trends, unpacking policy impacts, or just optimizing my grocery list, I love making sense of messy information. Insight always wins over intuition, unless we’re choosing where to eat.
         <div style="margin-top: 20px;">
@@ -158,7 +156,24 @@
     </div>
   </div>
 
-  <script>
+  
+    <script>
+    const roles = ["Analyst", "Financial Analyst", "Research Analyst", "Strategy & Growth", "Policy Analyst"];
+    let roleIndex = 0;
+    const roleDisplay = document.getElementById("roleDisplay");
+
+    function cycleRoles() {
+      roleDisplay.style.opacity = 0;
+      setTimeout(() => {
+        roleDisplay.textContent = roles[roleIndex];
+        roleDisplay.style.opacity = 1;
+        roleIndex = (roleIndex + 1) % roles.length;
+      }, 500);
+    }
+
+    setInterval(cycleRoles, 3000);
+    cycleRoles();
+    
     const roles = ["Analyst", "Financial Analyst", "Research Analyst", "Strategy & Growth", "Policy Analyst"];
     let i = 0;
     function typeRole() {
@@ -169,12 +184,10 @@
       function typing() {
         if (j < roleText.length) {
           typewriter.textContent += roleText.charAt(j);
-          typewriter.classList.add("typing");
           j++;
           setTimeout(typing, 100);
         } else {
-          typewriter.classList.remove("typing");
-        setTimeout(() => {
+          setTimeout(() => {
             i = (i + 1) % roles.length;
             typeRole();
           }, 2000);
