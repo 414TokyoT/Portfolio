@@ -1,10 +1,10 @@
 
 :root {
-  --bg-color: #F7F6F3;
-  --text-color: #2E2E2E;
-  --accent-color: #B3A398;
-  --border-color: #D6D6D6;
-  --hover-color: #A58F78;
+  --bg-color: #3E2C2C;       /* Dark brown background */
+  --text-color: #FFFFFF;      /* White text */
+  --accent-color: #D4BFAA;    /* Soft beige/tan for buttons and links */
+  --border-color: #A99F96;    /* Lighter warm gray */
+  --hover-color: #E6D3C2;     /* Lighter tan for hover states */
 }
 
 body {
@@ -26,7 +26,7 @@ a:hover {
 
 button, .btn {
   background-color: var(--accent-color);
-  color: #fff;
+  color: var(--bg-color);
   border: none;
   padding: 0.5em 1em;
   border-radius: 4px;
@@ -35,4 +35,8 @@ button, .btn {
 
 button:hover, .btn:hover {
   background-color: var(--hover-color);
+}
+
+.section-title, .contact-header, h1, h2, h3, h4 {
+  color: var(--text-color);
 }
