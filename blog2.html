@@ -14,10 +14,16 @@
       max-width: 800px;
       margin: auto;
     }
-    img {
+    img.author {
+      max-width: 200px;
+      border-radius: 10px;
+      display: block;
+      margin-bottom: 30px;
+    }
+    img.chart {
       max-width: 100%;
       border-radius: 10px;
-      margin-bottom: 30px;
+      margin: 30px 0;
     }
     h1 {
       color: #FFFFFF;
@@ -29,13 +35,13 @@
   </style>
 </head>
 <body>
-  <img src="PHOTO-2024-08-26-13-05-10.jpg" alt="Vinaya's Photo">
+  <img class="author" src="PHOTO-2024-08-26-13-05-10.jpg" alt="Vinaya's Photo">
   <h1>Rolling Volatility and Asset Behavior: A Time-Series Analysis of Bitcoin, Gold, and the S&P 500</h1>
-  <p>Volatility, in finance and economics, reflects the degree of uncertainty or risk in the returns of an asset. But risk isn’t a fixed number—it changes across time, regimes, and sentiment cycles. In this project, I wanted to understand how the volatility of three very different assets—Bitcoin, Gold, and the S&P 500—evolved over a four-year period from 2020 to 2023. Rather than using a single average to summarize volatility, I used a rolling window approach. This method calculates the standard deviation of returns over a moving 30-day window, giving a much more nuanced picture of how risk behaves over time.</p>
-  <p>To begin, I collected daily price data for all three assets using Python and the yfinance library. I calculated log returns, which are preferred in financial modeling because they’re time-additive and more symmetric for compounding effects. For each asset, I applied a 30-day rolling standard deviation to the log returns, then annualized it by multiplying by the square root of 252 to reflect typical trading days in a year. The resulting graph tracks rolling volatility across time, offering a clear view of when each asset became riskier or more stable. I also marked two critical points in Bitcoin’s trajectory—its all-time high in November 2021 and its local bottom in June 2022—highlighting just how violently its volatility moved during these turning points.</p>
-  <img src="rolling_volatility_btc_gold_sp500.png" alt="Rolling Volatility Plot of BTC, Gold, and S&P 500">
-  <p>The behavior across the three assets reveals clear differences. Bitcoin shows extreme and persistent volatility, especially around major price peaks and crashes. Even after falling, it doesn’t return to a calm regime—volatility remains elevated, suggesting the presence of volatility clustering. This is a well-known concept in time-series econometrics where periods of high volatility tend to be followed by more of the same, rather than fading away. In contrast, Gold’s volatility is low and remarkably steady. This supports its traditional role as a safe-haven asset and inflation hedge, especially during periods of macroeconomic uncertainty. The S&P 500 sits somewhere in between: its volatility rises during moments of genuine macro stress, such as the 2022 inflation spike and Fed tightening cycle, but it remains more grounded than Bitcoin.</p>
-  <p>From an economic perspective, this analysis touches on the classic idea of the risk-return tradeoff. If Bitcoin exhibits this much volatility, one would expect it to deliver significantly higher long-term returns as compensation. But the inconsistency of its return profile makes that assumption questionable. Is this risk systematic and rewarded, or simply speculative noise? On the other hand, Gold, while stable, offers relatively low returns, consistent with its lower risk. The S&P 500 responds to fundamentals and policy shifts, and its volatility largely follows economic developments. It behaves like a macro-sensitive benchmark rather than a speculative instrument.</p>
-  <p>This project helped me visualize not just how risky these assets are, but how their risk evolves in real time. Risk is not static—it reflects behavior, expectations, and underlying economic structure. A rolling volatility model allows us to quantify and visualize this dynamic nature of risk. For investors, portfolio managers, or policy analysts, this kind of analysis is essential for understanding how different assets function in uncertain environments and why treating risk as a moving target is far more powerful than relying on static summary statistics.</p>
+  <p>Volatility, in finance and economics, reflects the degree of uncertainty or risk in the returns of an asset. But risk is not a fixed number. It changes across time, under different economic regimes, and in response to shifts in investor sentiment. In this project, I set out to understand how the volatility of three distinct assets, Bitcoin, Gold, and the S&P 500, changed over a four year period from 2020 to 2023. Instead of using a single average to summarize risk, I applied a rolling window approa...
+  <p>To carry out the analysis, I collected daily price data for all three assets using Python and the yfinance library. I then calculated log returns, which are commonly used in financial modeling because they are time-additive and account more effectively for compounding. For each asset, I applied a 30-day rolling standard deviation to the log returns and annualized the result by multiplying it by the square root of 252, the approximate number of trading days in a year. The graph that results from thi...
+  <img class="chart" src="rolling_volatility_btc_gold_sp500.png" alt="Rolling Volatility Plot of BTC, Gold, and S&P 500">
+  <p>The graph reveals clear differences in how each asset behaves. Bitcoin experienced the highest and most persistent volatility. It saw sharp increases in risk during price surges and drawdowns, and it did not settle back into a low volatility regime even after major corrections. This pattern is consistent with volatility clustering, a well known concept in time-series econometrics where periods of high volatility are often followed by more of the same. In contrast, Gold remained steady with low and ...
+  <p>From an economics perspective, this analysis relates directly to the concept of the risk-return tradeoff. In theory, riskier assets should offer higher expected returns. Bitcoin certainly shows high volatility, but its return profile is inconsistent and often driven by speculative factors. This raises a question about whether its risk is truly systematic and compensated, or largely idiosyncratic and sentiment driven. Gold, with its lower risk and more predictable behavior, appeals to investors who ...
+  <p>This project helped me move beyond static risk summaries and explore how volatility actually behaves across time. It reinforces the idea that risk is not just a number. It is a dynamic, evolving feature of financial markets that responds to real world events, investor behavior, and macroeconomic conditions. By using a rolling volatility model, I was able to capture and visualize this evolution. For analysts, economists, and portfolio managers, this kind of analysis offers valuable insight into how ...
 </body>
 </html>
