@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Building an Optimal Portfolio with Modern Portfolio Theory in Python</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #0b0b0f;
+      color: #ffffff; /* body text white */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      line-height: 1.65;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+    header { margin-bottom: 12px; }
+    header a { color: #ffd54f; text-decoration: none; font-weight: 600; }
+    header a:hover { text-decoration: underline; }
+
+    /* Added: small top image like other blogs */
+    .author-thumb{
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 8px 0 4px;
+      border: 2px solid rgba(255,255,255,0.08);
+    }
+
+    h1 { font-size: 2rem; margin: 10px 0 8px; line-height: 1.25; }
+    /* Subheadings darker yellow per your request */
+    h2, h3 { color: #e0b000; margin-top: 28px; line-height: 1.3; }
+
+    p { margin: 12px 0; }
+    ul { margin: 12px 0 12px 22px; }
+    li { margin: 6px 0; }
+
+    .meta { color: #cfcfcf; font-size: 0.95rem; margin-bottom: 12px; }
+    .divider { height: 1px; background: linear-gradient(to right, transparent, #333, transparent); margin: 18px 0 8px; }
+
+    figure { margin: 20px 0; text-align: center; }
+    figure img { max-width: 100%; height: auto; border-radius: 8px; }
+    figcaption { font-size: 0.95rem; color: #cccccc; margin-top: 6px; }
+    code { background: #121218; padding: 1px 4px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="index.html">← Back</a>
+    </header>
+
+    <!-- New: small profile image at the top to match other blogs -->
+    <img src="vinaya_homepage_final.jpg" alt="Vinaya Ramaswamy" class="author-thumb" />
+
+    <h1>Building an Optimal Portfolio with Modern Portfolio Theory in Python</h1>
+    <div class="meta">A focused experiment in risk, return, and diversification</div>
+    <div class="divider"></div>
+
+    <p>I wanted to answer a simple question with real data. If I have a handful of assets, how should I combine them so the overall portfolio behaves better than any one asset on its own. No shortcuts. No predictions. Just what the numbers say.</p>
+
+    <p>This project uses Modern Portfolio Theory to construct two portfolios from five large cap names across sectors. One maximizes risk adjusted return. The other minimizes total volatility. The point is not to crown a winner. The point is to see what the trade offs look like when you let the math speak and then add judgment.</p>
+
+    <h2>Why I chose this approach</h2>
+    <p>I like MPT for two reasons. First, it forces me to write down what I want. Either I want the highest return for each unit of risk, or I want the lowest possible risk for a fully invested portfolio. Second, it treats the portfolio as a system. Correlations matter as much as individual volatilities. That is closer to how markets actually feel.</p>
+
+    <h2>Data and setup</h2>
+    <p>I used five years of daily prices for NVDA, JNJ, KO, XOM, and JPM. Prices were converted to returns. I annualized mean returns and built a covariance matrix. I used PyPortfolioOpt to solve two problems with long only weights that sum to one. No shorting. No leverage. A risk free rate of roughly three percent for the Sharpe calculation.</p>
+    <p>There are limits to this input set. Mean returns are noisy. Covariances drift. The recent history of a single stock can dominate estimates. I accept that and treat results as a starting point rather than an answer.</p>
+
+    <h2>The model in plain language</h2>
+    <p>Expected portfolio return is a weighted average of asset returns. Portfolio risk is not a simple average. It depends on how the assets move together. The variance formula combines each asset’s variance with every pairwise covariance. Diversification shows up when those covariances are low or negative. That is the entire idea.</p>
+    <p>With those inputs, I solved for two objectives.</p>
+    <ul>
+      <li>Maximize the Sharpe ratio. Extra return over the risk free rate per unit of volatility.</li>
+      <li>Minimize the portfolio standard deviation subject to being fully invested and long only.</li>
+    </ul>
+
+    <h2>What the optimizer produced</h2>
+
+    <h3>Max Sharpe</h3>
+    <figure>
+      <img src="weights_max_sharpe.png" alt="Max Sharpe Portfolio Allocation">
+      <figcaption>Allocation for the Max Sharpe portfolio</figcaption>
+    </figure>
+    <p>The optimizer put almost all the weight in NVDA. That is not a typo. It reflects the recent history in the data. NVDA delivered very high average returns relative to its volatility, so the math concentrates there. The reported Sharpe was strong. The expected volatility was high. The result is efficient on paper and fragile in practice.</p>
+
+    <h3>Minimum Volatility</h3>
+    <figure>
+      <img src="weights_min_vol.png" alt="Minimum Volatility Portfolio Allocation">
+      <figcaption>Allocation for the Minimum Volatility portfolio</figcaption>
+    </figure>
+    <p>This portfolio tilted toward JNJ and KO with small weights in XOM and NVDA and zero in JPM. It prioritized stability. The expected return was low. The Sharpe was modest. It is the calm option that trades away upside for a smoother ride.</p>
+
+    <h2>Conclusion</h2>
+    <p>Both solutions are correct under their definitions, and both are incomplete as investment products. The Max Sharpe solution is a single name bet wearing the language of efficiency. The Minimum Volatility solution is defensiveness taken to its logical end. Real money lives somewhere between them.</p>
+    <p>The useful part is the shape of the trade off. I can see how diversification actually reduces risk in the Min Vol solution. I can see how one dominant signal can overwhelm a naive Sharpe optimization. That is exactly why constraints and better estimators exist.</p>
+    <p>The model did exactly what I asked. That is the lesson. Optimization is a mirror. If I feed it raw means and covariances, it will chase the cleanest ratio it can find, even if that means one stock. If I ask for the smallest variance, it will build a basket of stable names and ignore growth entirely. Neither is a failure. Both are information.</p>
+    <p>The job is to take that information and add guardrails that reflect how risk is actually borne by a human portfolio holder. Caps, sectors, costs, and a wider opportunity set are not decorations. They are the difference between a backtest and a plan.</p>
+    <p>Modern Portfolio Theory is not a crystal ball. It is a disciplined way to ask a clear question and to see the consequences of that question in the language of risk and return. Used with judgment, it makes you more honest about trade offs. That is valuable on its own.</p>
+  </div>
+</body>
+</html>
