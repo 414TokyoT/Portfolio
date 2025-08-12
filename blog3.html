@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Building the Optimal Portfolio: My Modern Portfolio Theory Project in Python</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #0b0b0f;
+      color: #ffffff; /* body text white */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    header a {
+      color: #ffd54f;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    header a:hover { text-decoration: underline; }
+
+    h1 {
+      font-size: 1.9rem;
+      margin: 16px 0 8px;
+      line-height: 1.25;
+    }
+    /* Subheadings darker yellow */
+    h2, h3 {
+      color: #e0b000;
+      margin-top: 28px;
+      line-height: 1.3;
+    }
+
+    p { margin: 12px 0; }
+    ul { margin: 12px 0 12px 20px; }
+    li { margin: 6px 0; }
+
+    figure {
+      margin: 20px 0;
+      text-align: center;
+    }
+    figure img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    figcaption {
+      font-size: 0.95rem;
+      color: #cccccc;
+      margin-top: 6px;
+    }
+
+    .meta {
+      color: #cfcfcf;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #333, transparent);
+      margin: 18px 0 8px;
+    }
+    code {
+      background: #121218;
+      padding: 1px 4px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="index.html">← Back</a>
+    </header>
+
+    <h1>Building the Optimal Portfolio: My Modern Portfolio Theory Project in Python</h1>
+    <div class="meta">A practical dive into risk, return, and optimization</div>
+    <div class="divider"></div>
+
+    <h2>Setting the Stage</h2>
+    <p>
+      I picked five stocks across sectors to keep things focused: NVDA, JNJ, KO, XOM, and JPM.
+      The goal was to use Modern Portfolio Theory to build two portfolios:
+      one that maximizes risk adjusted return and one that minimizes overall volatility.
+    </p>
+
+    <h2>How I Approached It</h2>
+    <ul>
+      <li>Collected five years of adjusted close prices.</li>
+      <li>Converted prices to returns and built an annualized covariance matrix.</li>
+      <li>Ran optimization with <code>PyPortfolioOpt</code> to get Max Sharpe and Min Volatility portfolios.</li>
+      <li>Plotted allocations and summarized expected return, volatility, and Sharpe.</li>
+    </ul>
+
+    <h2>A Quick Note on MPT</h2>
+    <p>
+      MPT is about how assets work together. Two risky assets can combine into a less risky
+      portfolio if they are not perfectly correlated. The optimizer uses expected returns,
+      volatility, and covariance to find the most efficient mix for a given objective.
+    </p>
+
+    <h2>Results</h2>
+
+    <h3>Max Sharpe Portfolio</h3>
+    <figure>
+      <img src="assets/mpt/weights_max_sharpe.png" alt="Max Sharpe Portfolio Allocation">
+      <figcaption>Allocation for Max Sharpe portfolio</figcaption>
+    </figure>
+    <p>
+      Expected Return ~ 86.6%, Volatility ~ 53.9%, Sharpe ~ 1.55.
+      The optimizer concentrated almost entirely in NVDA because its
+      historical return was very high relative to its volatility.
+    </p>
+
+    <h3>Min Volatility Portfolio</h3>
+    <figure>
+      <img src="assets/mpt/weights_min_vol.png" alt="Min Volatility Portfolio Allocation">
+      <figcaption>Allocation for Minimum Volatility portfolio</figcaption>
+    </figure>
+    <p>
+      Expected Return ~ 6.78%, Volatility ~ 17.7%, Sharpe ~ 0.21.
+      This leaned heavily into JNJ and KO which are stable and low volatility
+      to reduce overall risk.
+    </p>
+
+    <h2>My Takeaways</h2>
+    <p>
+      The Max Sharpe solution is mathematically efficient but concentrated.
+      The Min Vol solution is stable but sacrifices upside.
+      Real portfolios add constraints to balance the two such as caps on single name weights,
+      sector limits, or additional asset classes like bonds and gold.
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+      This project made the risk return tradeoff feel concrete.
+      MPT is a great map, but judgment and constraints make it investable.
+      Next I plan to re run the model with weight caps and a broader asset set to
+      see how the efficient set changes.
+    </p>
+  </div>
+</body>
+</html>
