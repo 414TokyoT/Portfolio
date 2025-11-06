@@ -209,22 +209,5 @@
       </a>
 </p>
 </section>
-<script>
-    const roles = ["Analyst", "Financial Analyst", "Research Analyst", "Strategy & Growth", "Policy Analyst"];
-    let roleIndex = 0;
-    const roleDisplay = document.getElementById("roleDisplay");
-
-    function cycleRoles() {
-      roleDisplay.style.opacity = 0;
-      setTimeout(() => {
-        roleDisplay.textContent = roles[roleIndex];
-        roleDisplay.style.opacity = 1;
-        roleIndex = (roleIndex + 1) % roles.length;
-      }, 500);
-    }
-
-    setInterval(cycleRoles, 3000);
-    cycleRoles();
-  </script>
 </body>
 </html>
